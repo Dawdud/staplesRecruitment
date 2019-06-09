@@ -1,0 +1,47 @@
+.modal {
+    background: #ffffff;
+    
+    overflow-x: auto;
+    display: flex;
+    flex-direction: column;
+    border-radius: 4px;
+    &__backdrop {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      transition: all .5s ease;
+      background-color: rgba(0, 0, 0, 0.7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    &__header {
+      color: #4aae9b;
+    }
+    &-slide-enter{
+        opacity:0;
+        transition: margin-bottom  1s ;
+    }
+    &-slide-leave-active{
+      opacity: 0;
+    }
+    &-slide-enter, 
+    &-slide-leave-to{
+        margin-bottom: -200px;
+        
+    }
+    &-slide-enter-to,
+    &-slide-leave{
+      margin-bottom: 0px;
+      
+    }
+  
+  }
+  
+  
+  
+  
+  
+  
