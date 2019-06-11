@@ -9,13 +9,16 @@
     <div class="content__id">
       <p>{{data.id}}</p>
     </div>
+   
     <div class="content--modal" v-if="parrentData=== 'modal' ">
      <div class="content__title">
        <p>{{data.general.description}}</p>
     </div>
     <div class="content__id">
       <p>{{data.brand.name}}</p>
+      
     </div>
+    
    <button class="content__button">Add to Cart</button>
 
 <select id="quantity__select" >
@@ -36,6 +39,7 @@ export default {
    data() {
     return { quantity:10 };
   },
+  
   
 };
 </script>
