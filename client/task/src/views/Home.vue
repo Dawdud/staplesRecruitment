@@ -1,19 +1,18 @@
 <template>
   <div class="home">
-    <search />
-   <product />
+    <search/>
+    <product/>
   </div>
 </template>
 
 <script>
-
-import  product from '../components/product'
-import  search from '../components/search'
+import product from "../components/product";
+import search from "../components/search";
 export default {
-  name: 'home',
+  name: "home",
   components: {
     product,
-    search,
+    search
   }
 };
 </script>
