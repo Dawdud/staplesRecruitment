@@ -7,6 +7,10 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     products:[],
+    listOfProducts: [],
+    page: 1,
+    perPage: 3,
+    pages: [],
   },
   mutations: {
       SET_PRODUCT_LIST: (state, {list} )=>{

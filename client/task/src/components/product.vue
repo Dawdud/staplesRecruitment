@@ -1,15 +1,21 @@
 <template>
   <div class="Products">
-    <div class="content" v-for="item in listOfProducts">
+    <div class="content" v-for="item in paginate">
       <detailView :data="item"></detailView>
-      
-      
-     
     </div>
-    <button @click="paginate"> paginacja</button>
-   
-      
-    <modal v-show="isModalVisible"  @close="closeModal" v-bind:data="modalData"  v-if="modalData !== null"></modal>
+    <pagination :current-page="page" 
+    :page-count="pagecount"
+    @nextPage="pageChangedHandle('next')"
+    @previousPage="pageChangedHandle('previous')"
+    @loadPage="pageChangedHandle"
+    ></pagination>
+    
+    <modal
+      v-show="isModalVisible"
+      @close="closeModal"
+      v-bind:data="modalData"
+      v-if="modalData !== null"
+    ></modal>
   </div>
 </template>
 
@@ -17,24 +23,42 @@
 import { mapState } from "vuex";
 import modal from "../views/modal";
 import detailView from "../views/Details";
-export default {
+import pagination from '../views/pagination';
 
-  name:"Products",
+
+export default {
+  name: "Products",
   created() {
     this.$store.dispatch("LOAD_PRODUCT_LIST");
-    this.paginate();
     
   },
   data() {
-    return { isModalVisible: false, modalData: null,
-             parrentName: this.$options.name,
-             listOfProducts:[],
-             page:1, 
-             perPage:3,
-             pages:[] };
+    return {
+      isModalVisible: false,
+      modalData: null,
+      parrentName: this.$options.name,
+      listOfProducts: [],
+      page: 1,
+      perPage: 3,
+      pages: [], 
+      pagecount:4,
+    };
   },
   computed: {
-    ...mapState(["products"])
+    ...mapState(["products"]),
+     paginate: function(){
+      for (var key in this.products) {
+        this.listOfProducts.push(this.products[key]);
+      }
+      let page = this.page;
+      let perPage = this.perPage;
+      let from = page * perPage - perPage;
+      let to = page * perPage;
+      return this.listOfProducts.slice(from, to);
+     }
+    
+    
+
   },
   methods: {
     showModal(data) {
@@ -44,32 +68,36 @@ export default {
     closeModal() {
       this.isModalVisible = false;
     },
-   
-     setPages(){
-       let pagesNumber=  Math.ceil(Object.keys(this.products).length/this.perPage)
-       for(let index=1; index<= pagesNumber; index++){
-         this.pages.push(index);
-       }
-       console.log(this.pages);
-    },
-    paginate(){
 
-      for(var key in this.products){
-        this.listOfProducts.push(this.products[key])
+    setPages() {
+      let pagesNumber = Math.ceil(
+        Object.keys(this.products).length / this.perPage
+      );
+      for (let index = 1; index <= pagesNumber; index++) {
+        this.pages.push(index);
       }
-      let page= this.page;
-      let perPage= this.perPage;
-      let from =(page *perPage) - perPage;
-      let to= (page* perPage);
-      this.listOfProducts= this.listOfProducts.slice(from,to)
+      console.log(this.pages);
+    },
+    pageChangedHandle(value){
+      switch(value){
+        case 'next':
+          this.page +=1
+          break
+        case 'previous':
+          this.page -=1
+          break
+        default:
+          this.page= value
+      }
 
-    }
+    },
    
   },
 
   components: {
     modal,
-    detailView
+    detailView, 
+    pagination
   }
 };
 </script>
