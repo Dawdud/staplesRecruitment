@@ -1,7 +1,7 @@
 <template>
-  <div >
+  <div class="content" >
     <div class="content__image">
-      <img :src="data.images.primary.large" alt>
+      <img @click="onClick()" :src="data.images.primary.large" alt>
     </div>
     <div class="content__title">
       <p>{{data.general.name}}</p>
@@ -38,7 +38,13 @@ export default {
   props: ["data", "parrentData" ],
    data() {
     return { quantity:10 };
+
   },
+  methods: {
+    onClick(){
+      this.$emit('modalWindow')
+    }
+  }
   
   
 };

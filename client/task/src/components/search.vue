@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <div class="search">
     <form action>
       <input type="text">
-      <label for>Search</label>
+     
     </form>
   </div>
 </template>

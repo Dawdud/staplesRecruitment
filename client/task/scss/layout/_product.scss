@@ -1,0 +1,21 @@
+.products{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: row;
+}
+.content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin:.3em;
+    &__image{
+       
+      img{
+        height: auto;
+        width: 100%;
+
+      }
+    }
+}

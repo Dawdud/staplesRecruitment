@@ -1,10 +1,12 @@
 <template>
-  <div class="Products">
+  <div class="products">
     <div class="content" v-for="item in paginate">
-      <detailView :data="item"></detailView>
+      <detailView :data="item" @modalWindow="showModal(item)" ></detailView>
     </div>
+    
     <pagination :current-page="page" 
     :page-count="pagecount"
+    :pagesList="pages"
     @nextPage="pageChangedHandle('next')"
     @previousPage="pageChangedHandle('previous')"
     @loadPage="pageChangedHandle"
@@ -69,15 +71,7 @@ export default {
       this.isModalVisible = false;
     },
 
-    setPages() {
-      let pagesNumber = Math.ceil(
-        Object.keys(this.products).length / this.perPage
-      );
-      for (let index = 1; index <= pagesNumber; index++) {
-        this.pages.push(index);
-      }
-      console.log(this.pages);
-    },
+   
     pageChangedHandle(value){
       switch(value){
         case 'next':

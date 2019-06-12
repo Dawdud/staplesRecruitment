@@ -21,7 +21,12 @@ export default {
         pageCount:{
             type: Number,
             required: true,
-        } 
+        }, 
+        pagesList:{
+            type: Array,
+            required: true,
+        }
+        
     }, 
     computed: {
         isPreviousButtonDisabled(){
