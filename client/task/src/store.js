@@ -6,25 +6,24 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    products:[],
-    listOfProducts: [],
-    page: 1,
-    perPage: 3,
-    pages: [],
+    products: [],
+
   },
   mutations: {
-      SET_PRODUCT_LIST: (state, {list} )=>{
-        state.products= list
-      }
+    SET_PRODUCT_LIST: (state, { list }) => {
+      state.products = list;
+    },
   },
   actions: {
-    LOAD_PRODUCT_LIST: function({commit}){
-      axios.get('http://localhost:3005/products').then((response) =>{
-        
-        commit('SET_PRODUCT_LIST', {list: response.data})
-      }, (err)=>{
-        console.log(err)
-      })
-    }
+    LOAD_PRODUCT_LIST({ commit }) {
+      axios.get('http://localhost:3005/products').then(
+        (response) => {
+          commit('SET_PRODUCT_LIST', { list: response.data });
+        },
+        (err) => {
+          console.log(err);
+        },
+      );
+    },
   },
 });

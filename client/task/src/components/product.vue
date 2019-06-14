@@ -1,17 +1,18 @@
 <template>
   <div class="products">
     <div class="content" v-for="item in paginate">
-      <detailView :data="item" @modalWindow="showModal(item)" ></detailView>
+      <detailView :data="item" @modalWindow="showModal(item)"></detailView>
     </div>
-    
-    <pagination :current-page="page" 
-    :page-count="pagecount"
-    :pagesList="pages"
-    @nextPage="pageChangedHandle('next')"
-    @previousPage="pageChangedHandle('previous')"
-    @loadPage="pageChangedHandle"
+
+    <pagination
+      :current-page="page"
+      :page-count="pagecount"
+      :pagesList="pages"
+      @nextPage="pageChangedHandle('next')"
+      @previousPage="pageChangedHandle('previous')"
+      @loadPage="pageChangedHandle"
     ></pagination>
-    
+
     <modal
       v-show="isModalVisible"
       @close="closeModal"
@@ -25,14 +26,12 @@
 import { mapState } from "vuex";
 import modal from "../views/modal";
 import detailView from "../views/Details";
-import pagination from '../views/pagination';
-
+import pagination from "../views/pagination";
 
 export default {
   name: "Products",
   created() {
     this.$store.dispatch("LOAD_PRODUCT_LIST");
-    
   },
   data() {
     return {
@@ -42,25 +41,20 @@ export default {
       listOfProducts: [],
       page: 1,
       perPage: 3,
-      pages: [], 
-      pagecount:4,
+      pages: [],
+      pagecount: 4
     };
   },
   computed: {
     ...mapState(["products"]),
-     paginate: function(){
-      for (var key in this.products) {
-        this.listOfProducts.push(this.products[key]);
-      }
+    paginate: function() {
+     
       let page = this.page;
       let perPage = this.perPage;
       let from = page * perPage - perPage;
       let to = page * perPage;
-      return this.listOfProducts.slice(from, to);
-     }
-    
-    
-
+      return this.products.slice(from, to);
+    }
   },
   methods: {
     showModal(data) {
@@ -71,26 +65,23 @@ export default {
       this.isModalVisible = false;
     },
 
-   
-    pageChangedHandle(value){
-      switch(value){
-        case 'next':
-          this.page +=1
-          break
-        case 'previous':
-          this.page -=1
-          break
+    pageChangedHandle(value) {
+      switch (value) {
+        case "next":
+          this.page += 1;
+          break;
+        case "previous":
+          this.page -= 1;
+          break;
         default:
-          this.page= value
+          this.page = value;
       }
-
-    },
-   
+    }
   },
 
   components: {
     modal,
-    detailView, 
+    detailView,
     pagination
   }
 };
