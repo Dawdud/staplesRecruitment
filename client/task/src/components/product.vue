@@ -1,7 +1,8 @@
 <template>
   <div class="products">
-    <div class="content" v-for="item in paginate">
+    <div class="container" v-for="item in paginate">
       <detailView :data="item" @modalWindow="showModal(item)"></detailView>
+    
     </div>
 
     <pagination

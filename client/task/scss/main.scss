@@ -2,9 +2,14 @@
 
 @import "base/base";
 
-
+@import"pages/home";
 
 @import"layout/modal";
 @import"layout/product";
 @import"layout/search";
+@import"layout/button";
 
+
+@import "utils/functions";
+@import "utils/mixins";
+@import "utils/variables";

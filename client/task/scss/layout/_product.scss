@@ -1,3 +1,6 @@
+@import '../utils/variables';
+@import '../utils/mixins';
+
 .products{
     display: flex;
     flex-direction: column;
@@ -9,13 +12,93 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin:.3em;
-    &__image{
-       
-      img{
-        height: auto;
-        width: 100%;
-
-      }
+    
+    
+    background-color: $white;
+    
+    
+    &__description{
+     text-align: left;
+     padding-left: .7em;
+     
+     
     }
+    &__title{
+      text-align: center;
+      padding: .7em;
+    }
+    &__id{
+      padding: .7em;
+    }
+    
+    
+}
+@include smartphone{
+  .content{
+  margin: .6em;
+height: 30em;
+width: 95vw;
+
+&--modal{
+  width: 20em;
+  padding: 10px;
+ }
+ &__image{
+  padding-bottom: 3.4em;
+ img{
+   object-fit: cover;
+   width: 79vw;
+   height: auto;
+   
+
+ }
+}
+  }
+
+}
+@include tablet{
+  .content{
+  margin: .6em;
+height: 30em;
+width: 90vw;
+
+&--modal{
+  width: 20em;
+  padding: 10px;
+ }
+ &__image{
+  padding-bottom: 3em;
+ img{
+   object-fit: cover;
+   width: 47vw;
+   height: auto;
+   
+
+ }
+}
+  }
+
+}
+@include desktop{
+  .content{
+  margin: .6em;
+height: 85vh;
+width: 56vw;
+
+&--modal{
+  width: 20em;
+  padding: 10px;
+ }
+ &__image{
+  padding-bottom: 2.4em;
+ img{
+   object-fit: cover;
+   width: 35vw;
+   height: auto;
+   
+
+ }
+}
+  }
+
 }

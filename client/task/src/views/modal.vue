@@ -8,14 +8,16 @@
         aria-describedby="modalDescription"
       >
         <header class="modal__header">
-          <button type="button" class="btn-green" @click="close" aria-label="Close modal">X</button>
-          <slot name="header">
-            <detailView :data="data" :parrentData="parrentName"></detailView>
-          </slot>
+          <p  class="btn--green" @click="close" aria-label="Close modal">X</p>
+         
         </header>
 
         <section class="modal__body">
-          <slot name="body"></slot>
+          <slot name="body">
+             <slot name="header">
+            <detailView :data="data" :parrentData="parrentName"></detailView>
+          </slot>
+          </slot>
         </section>
       </div>
     </div>
