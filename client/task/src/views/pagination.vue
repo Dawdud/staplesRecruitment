@@ -1,8 +1,8 @@
 <template>
   <div class="base-pagination">
-    <BaseButton @click.native="previousPage" :disabled="isPreviousButtonDisabled">Previous</BaseButton>
+    <BaseButton @click.native="previousPage" :disabled="isPreviousButtonDisabled">←</BaseButton>
     <paginationTrigger :pageNumber="currentPage" @loadPage="onLoadPage"/>
-    <BaseButton @click.native="nextPage" :disabled="isNextButtonDisabled">next</BaseButton>
+    <BaseButton @click.native="nextPage" :disabled="isNextButtonDisabled"> → </BaseButton>
   </div>
 </template>
 

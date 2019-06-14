@@ -9,7 +9,15 @@
     <div class="content__id">
       <p>{{data.id}}</p>
     </div>
-       <button  type="button" class="btn btn__cart" v-if=" parrentData!== 'modal'">Add to Cart</button>
+       <div class="content__add">
+      <div class="btn">
+      <button class="btn__cart">Add to Cart</button>
+      </div>
+      <div>
+      <quantity/>
+      </div>
+
+      </div>
     <div class="content--modal" v-if="parrentData=== 'modal' ">
       <div class="content__description">
         <p>{{data.general.description}}</p>
@@ -17,17 +25,15 @@
       <div class="content__id">
         <p>{{data.brand.name}}</p>
       </div>
+      
 
-      <button class="content__button">Add to Cart</button>
-
-      <select id="quantity__select">
-        <option v-for=" index in quantity" :value="index">{{index}}</option>
-      </select>
+     
     </div>
   </section>
 </template>
 
 <script>
+import quantity from "./quantity";
 export default {
   name: "detailView",
   props: ["data", "parrentData"],
@@ -38,6 +44,10 @@ export default {
     onClick() {
       this.$emit("modalWindow");
     }
+
+  },
+  components: {
+   quantity,
   }
 };
 </script>

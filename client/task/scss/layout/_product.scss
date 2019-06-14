@@ -30,6 +30,12 @@
     &__id{
       padding: .7em;
     }
+    &__add{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+    }
     
     
 }
@@ -63,7 +69,7 @@ height: 30em;
 width: 90vw;
 
 &--modal{
-  width: 20em;
+  width: 45em;
   padding: 10px;
  }
  &__image{
@@ -86,7 +92,7 @@ height: 85vh;
 width: 56vw;
 
 &--modal{
-  width: 20em;
+  width: 70vw;
   padding: 10px;
  }
  &__image{
