@@ -10,7 +10,7 @@
         <header class="modal__header">
           <button type="button" class="btn-green" @click="close" aria-label="Close modal">X</button>
           <slot name="header">
-            <detailView :data="data" :parrentData ="parrentName"></detailView>
+            <detailView :data="data" :parrentData="parrentName"></detailView>
           </slot>
         </header>
 
@@ -26,10 +26,10 @@ import detailView from "../views/Details";
 export default {
   name: "modal",
   props: ["data"],
-   data() {
-    return {  parrentName: this.$options.name };
+  data() {
+    return { parrentName: this.$options.name };
   },
-  
+
   methods: {
     close() {
       this.$emit("close");

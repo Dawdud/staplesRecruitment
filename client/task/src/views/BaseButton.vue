@@ -1,6 +1,6 @@
 <template>
-  <button :disabled="disabled" class="button ">
-    <slot />
+  <button :disabled="disabled" class="button">
+    <slot/>
   </button>
 </template>
 
