@@ -2239,6 +2239,22 @@
           "large": "https://i.imgur.com/qozblto.jpg"
         }
       }
+    },
+    {
+      "general": {
+        "presentable_id": "string",
+        "name": "string",
+        "description": "string"
+      },
+      "images": {
+        "primary": {
+          "large": "string"
+        }
+      },
+      "id": "string",
+      "brand": {
+        "name": "string"
+      }
     }
   ]
 }
